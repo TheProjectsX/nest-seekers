@@ -8,7 +8,7 @@ function App() {
   const [userAuthData, setUserAuthData] = useState(null);
 
   return (
-    <div className="max-w-[1050px] mx-auto font-ubuntu" data-theme="night">
+    <div className="max-w-[1100px] mx-auto font-ubuntu" data-theme="night">
       <UserDataContext.Provider value={{ userAuthData, setUserAuthData }}>
         <div className="px-5 mb-10">
           <Navbar />
