@@ -5,7 +5,8 @@ import "./index.css";
 
 // React Router Dom
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Home.jsx";
+import Home from "./routes/Home.jsx";
+import PropertyDetails from "./routes/PropertyDetails.jsx";
 
 // Router
 const router = createBrowserRouter([
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("/data/properties.json"),
+      },
+      {
+        path: "/property-details/:id",
+        element: <PropertyDetails />,
         loader: () => fetch("/data/properties.json"),
       },
     ],

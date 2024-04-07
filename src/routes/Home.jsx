@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 
-import Slider from "./Slider";
+import Slider from "../components/Slider";
 import locationIcon from "../assets/icons/location.svg";
 
 const Home = () => {
@@ -68,7 +68,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="absolute left-[50%] translate-x-[-50%] bottom-2">
-                <Link to={"/"} className="btn">
+                <Link to={`/property-details/${item["id"]}`} className="btn">
                   View Property
                 </Link>
               </div>
