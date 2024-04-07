@@ -5,23 +5,24 @@ import "./index.css";
 
 // React Router Dom
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import UserDataContext from "./context/context.jsx";
+import Home from "./components/Home.jsx";
 
 // Router
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // children: []
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
   },
 ]);
 
-const [userAuthData, setUserAuthData] = useState(null);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <UserDataContext.Provider value={{ userAuthData, setUserAuthData }}>
-      <RouterProvider router={router} />
-    </UserDataContext.Provider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
