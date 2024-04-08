@@ -16,6 +16,14 @@ const PropertyDetails = () => {
   //   if (propertyData == null) {
   //     return <></>;
   //   }
+
+  // Capitalize the First Latters of each Words
+  function capitalizeFirstLetters(str) {
+    return str
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
   const propertyData = {
     image:
       "https://i.ibb.co/n3FzkW4/digital-marketing-agency-ntwrk-g39p1k-Djv-SY-unsplash-1.jpg",
@@ -57,12 +65,33 @@ const PropertyDetails = () => {
               <h4 className="text-2xl font-bold font-lato text-center underline underline-offset-4 mb-3">
                 Details:
               </h4>
-              <table className="text-center w-full">
+              <table className="text-left w-full mb-2">
+                <tr>
+                  <th>Status:</th>
+                  <td>{capitalizeFirstLetters(propertyData["status"])}</td>
+                </tr>
                 <tr>
                   <th>Price:</th>
                   <td>{propertyData["price"]}</td>
                 </tr>
+                <tr>
+                  <th>Area:</th>
+                  <td>{propertyData["area"]}</td>
+                </tr>
+                <tr>
+                  <th>Location:</th>
+                  <td>{propertyData["location"]}</td>
+                </tr>
+                <tr>
+                  <th>Facilities:</th>
+                  <td>
+                    {propertyData["facilities"]
+                      .map((item) => capitalizeFirstLetters(item))
+                      .join(", ")}
+                  </td>
+                </tr>
               </table>
+              <p className="font-lato italic">{propertyData["segment_name"]}</p>
             </div>
           </div>
         </div>

@@ -48,12 +48,14 @@ const Home = () => {
               </p>
 
               <div className="p-4">
-                <p className="mb-1 font-semibold text-stone-300 font-lato pl-2 border-l-2">
+                <p className="mb-2 font-semibold text-stone-300 font-lato pl-2 border-l-2">
                   {item["price"]}
                 </p>
                 <p className="font-bold text-xl">{item["estate_title"]}</p>
                 <p className="mb-2 italic text-sm">{item["segment_name"]}</p>
-                <code className="mb-2 inline-block">{item["description"]}</code>
+                <p className="mb-2 font-lato inline-block">
+                  {item["description"]}
+                </p>
                 <p>
                   Area: <span className="italic">{item["area"]}</span>
                 </p>
