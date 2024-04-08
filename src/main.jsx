@@ -7,6 +7,8 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import PropertyDetails from "./routes/PropertyDetails.jsx";
+import Login from "./routes/Login.jsx";
+import Signup from "./routes/Signup.jsx";
 
 // Router
 const router = createBrowserRouter([
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
         path: "/property-details/:id",
         element: <PropertyDetails />,
         loader: () => fetch("/data/properties.json"),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
       },
     ],
   },

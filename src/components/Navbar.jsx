@@ -2,9 +2,23 @@ import { useContext } from "react";
 import UserDataContext from "../context/context";
 import { NavLink } from "react-router-dom";
 
+// React Toast
+import { toast } from "react-toastify";
+
+// Firebase Auth Provider
+import { signOut } from "firebase/auth";
+import auth from "../firebase/config";
+
 const Navbar = () => {
   const context = useContext(UserDataContext);
   const { userAuthData } = context;
+
+  // Logout User
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => toast.success("Logout Successful"))
+      .catch((error) => console.log(error));
+  };
 
   const NavLinks = () => (
     <>
@@ -24,12 +38,14 @@ const Navbar = () => {
     <>
       {userAuthData ? (
         <>
-          <button className="btn">Logout</button>
+          <button className="btn" onClick={handleLogout}>
+            Logout
+          </button>
           <img
             src={userAuthData.photoURL}
             alt="Profile Picture"
             className="w-10 rounded-full border-2 border-gray-500 ml-3"
-            title="Title"
+            title={userAuthData.displayName}
           />
         </>
       ) : (

@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 import Slider from "../components/Slider";
-import locationIcon from "../assets/icons/location.svg";
+import { IoLocationSharp } from "react-icons/io5";
 
 const Home = () => {
   const propertiesData = useLoaderData();
@@ -60,8 +60,7 @@ const Home = () => {
                   Area: <span className="italic">{item["area"]}</span>
                 </p>
                 <p className="flex items-center gap-2 mb-2.5">
-                  <img src={locationIcon} alt="Location Icon" className="w-4" />{" "}
-                  {item["location"]}
+                  <IoLocationSharp /> {item["location"]}
                 </p>
                 <p className="text-sm italic text-teal-400">
                   {item["facilities"]
