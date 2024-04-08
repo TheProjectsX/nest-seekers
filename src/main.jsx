@@ -8,7 +8,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import PropertyDetails from "./routes/PropertyDetails.jsx";
 import Login from "./routes/Login.jsx";
-import Signup from "./routes/Signup.jsx";
+import SignUp from "./routes/Signup.jsx";
+import UpdateProfile from "./routes/UpdateProfile.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 // Router
 const router = createBrowserRouter([
@@ -22,17 +24,37 @@ const router = createBrowserRouter([
         loader: () => fetch("/data/properties.json"),
       },
       {
-        path: "/property-details/:id",
-        element: <PropertyDetails />,
-        loader: () => fetch("/data/properties.json"),
-      },
-      {
         path: "/login",
-        element: <Login />,
+        element: (
+          <PrivateRoute reverse={true}>
+            <Login />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/signup",
-        element: <Signup />,
+        element: (
+          <PrivateRoute reverse={true}>
+            <SignUp />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/property-details/:id",
+        element: (
+          <PrivateRoute>
+            <PropertyDetails />
+          </PrivateRoute>
+        ),
+        loader: () => fetch("/data/properties.json"),
+      },
+      {
+        path: "/update-profile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },

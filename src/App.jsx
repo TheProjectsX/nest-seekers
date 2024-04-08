@@ -16,13 +16,17 @@ import { onAuthStateChanged } from "firebase/auth";
 import auth from "./firebase/config";
 
 function App() {
+  const [dataLoading, setDataLoading] = useState(true);
   const [userAuthData, setUserAuthData] = useState(null);
 
   // Auth Change Effect
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) =>
-      setUserAuthData(user)
-    );
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user === null || user?.photoURL !== null) {
+        setDataLoading(false);
+        setUserAuthData(user);
+      }
+    });
     return () => unsubscribe();
   }, []);
 
@@ -42,7 +46,9 @@ function App() {
         transition={Bounce}
       />
       <div className="max-w-[1100px] mx-auto font-ubuntu" data-theme="night">
-        <UserDataContext.Provider value={{ userAuthData, setUserAuthData }}>
+        <UserDataContext.Provider
+          value={{ userAuthData, setUserAuthData, dataLoading }}
+        >
           <div className="px-5 mb-10">
             <Navbar />
             <Outlet />

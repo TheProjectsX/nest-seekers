@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import UserDataContext from "../context/context";
 
 // Icons
 import { FcGoogle } from "react-icons/fc";
@@ -19,16 +20,20 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/config";
 
-const Signup = () => {
+const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
+  const context = useContext(UserDataContext);
+  const { setUserAuthData } = context;
+
   const passwordVerifyPattern = /(?=.*[A-Z])(?=.*[a-z]).{6,}/;
 
   // Sign up using Google
   const handleGoogleSignUp = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => console.log(result.user))
+      .then(() => {
+        toast.success("Sign Up Successful!");
+      })
       .catch((error) => console.log(error));
   };
 
@@ -36,7 +41,9 @@ const Signup = () => {
   const handleGitHubSignUp = () => {
     const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => console.log(result.user))
+      .then(() => {
+        toast.success("Sign Up Successful!");
+      })
       .catch((error) => console.log(error));
   };
 
@@ -63,16 +70,16 @@ const Signup = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        console.log(result.user);
         toast.success("Sign Up Successful!");
         updateProfile(result.user, {
           displayName: fullName,
           photoURL:
-            photoUrl !== "" ? photoUrl : "/images/dummy-profile-picture.jpg",
+            photoUrl !== ""
+              ? photoUrl
+              : "https://i.ibb.co/c10qCXL/dummy-profile-picture.jpg",
         })
-          .then(() => console.log("Profile Updated!"))
+          .then(() => setUserAuthData(result.user))
           .catch((err) => console.log(err));
-        navigate("/login");
       })
       .catch((error) => console.log(error));
   };
@@ -94,14 +101,14 @@ const Signup = () => {
                 onClick={handleGoogleSignUp}
               >
                 <FcGoogle className="text-xl" />
-                Sign Up with Google
+                Continue with Google
               </button>
               <button
                 className="px-6 py-2.5 flex justify-center items-center gap-2 border border-[#4b5563] rounded-lg hover:bg-[#374151] hover:text-gray-200"
                 onClick={handleGitHubSignUp}
               >
                 <FaGithub className="text-xl text-white" />
-                Sign Up with GitHub
+                Continue with GitHub
               </button>
             </div>
             <div className="relative flex items-center">
@@ -205,4 +212,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUp;

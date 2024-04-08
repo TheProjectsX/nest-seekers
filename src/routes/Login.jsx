@@ -26,7 +26,9 @@ const Login = () => {
   const handleGoogleLogin = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => console.log(result.user))
+      .then(() => {
+        toast.success("Login Successful!");
+      })
       .catch((error) => console.log(error));
   };
 
@@ -34,7 +36,9 @@ const Login = () => {
   const handleGitHubLogin = () => {
     const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => console.log(result.user))
+      .then(() => {
+        toast.success("Login Successful!");
+      })
       .catch((error) => console.log(error));
   };
 
@@ -45,10 +49,8 @@ const Login = () => {
     const password = e.target.password.value;
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
+      .then(() => {
         toast.success("Login Successful!");
-        navigate("/");
-        console.log(result.user);
       })
       .catch((error) => {
         e.target.submit.classList.add("animate__shakeX");
@@ -84,14 +86,14 @@ const Login = () => {
                 onClick={handleGoogleLogin}
               >
                 <FcGoogle className="text-xl" />
-                Login with Google
+                Continue with Google
               </button>
               <button
                 className="px-6 py-2.5 flex justify-center items-center gap-2 border border-[#4b5563] rounded-lg hover:bg-[#374151] hover:text-gray-200"
                 onClick={handleGitHubLogin}
               >
                 <FaGithub className="text-xl text-white" />
-                Login with GitHub
+                Continue with GitHub
               </button>
             </div>
             <div className="relative flex items-center">

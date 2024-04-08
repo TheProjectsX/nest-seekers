@@ -11,7 +11,7 @@ import auth from "../firebase/config";
 
 const Navbar = () => {
   const context = useContext(UserDataContext);
-  const { userAuthData } = context;
+  const { userAuthData, dataLoading } = context;
 
   // Logout User
   const handleLogout = () => {
@@ -34,27 +34,30 @@ const Navbar = () => {
     </>
   );
 
-  const UserProfile = () => (
-    <>
-      {userAuthData ? (
-        <>
-          <button className="btn" onClick={handleLogout}>
-            Logout
-          </button>
-          <img
-            src={userAuthData.photoURL}
-            alt="Profile Picture"
-            className="w-10 rounded-full border-2 border-gray-500 ml-3"
-            title={userAuthData.displayName}
-          />
-        </>
-      ) : (
-        <NavLink className="btn" to={"/login"}>
-          Login
-        </NavLink>
-      )}
-    </>
-  );
+  const UserProfile = () =>
+    dataLoading ? (
+      <span className="loading loading-dots loading-md"></span>
+    ) : (
+      <>
+        {userAuthData ? (
+          <>
+            <button className="btn" onClick={handleLogout}>
+              Logout
+            </button>
+            <img
+              src={userAuthData.photoURL}
+              alt="Profile Picture"
+              className="w-10 rounded-full border-2 border-gray-500 ml-3"
+              title={userAuthData.displayName}
+            />
+          </>
+        ) : (
+          <NavLink className="btn" to={"/login"}>
+            Login
+          </NavLink>
+        )}
+      </>
+    );
 
   return (
     <div className="navbar bg-base-100 mb-4 shadow-md">
