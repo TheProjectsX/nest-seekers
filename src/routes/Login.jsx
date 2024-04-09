@@ -109,7 +109,7 @@ const Login = () => {
                     name="email"
                     className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                     placeholder="name@company.com"
-                    required={true}
+                    required
                   />
                 </label>
               </div>
@@ -122,7 +122,7 @@ const Login = () => {
                     placeholder={showPassword ? "123456" : "••••••"}
                     minLength={6}
                     className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                    required={true}
+                    required
                   />
                   <div
                     className="absolute right-1 top-8 text-xl p-2 cursor-pointer"

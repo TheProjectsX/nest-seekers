@@ -125,7 +125,7 @@ const SignUp = () => {
                     name="name"
                     className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Mr XYZ"
-                    required={true}
+                    required
                   />
                 </label>
               </div>
@@ -137,7 +137,7 @@ const SignUp = () => {
                     name="email"
                     className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                     placeholder="name@company.com"
-                    required={true}
+                    required
                   />
                 </label>
               </div>
@@ -149,7 +149,6 @@ const SignUp = () => {
                     name="photoUrl"
                     className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                     placeholder="https://example.com/...."
-                    required={false}
                   />
                 </label>
               </div>
@@ -162,7 +161,7 @@ const SignUp = () => {
                     placeholder={showPassword ? "123456" : "••••••"}
                     minLength={6}
                     className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                    required={true}
+                    required
                     onChange={(e) =>
                       (e.target.style.borderColor = "rgb(75 85 99)")
                     }
@@ -182,7 +181,6 @@ const SignUp = () => {
                       aria-describedby="remember"
                       type="checkbox"
                       className="w-4 h-4 border rounded focus:ring-3 bg-gray-700 border-gray-600 focus:ring-[#2563eb] ring-offset-gray-800"
-                      required={false}
                     />
                     Remember me
                   </label>
