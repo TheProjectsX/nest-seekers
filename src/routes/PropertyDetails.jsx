@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, useLoaderData, Link } from "react-router-dom";
 
+// React Helmet
+import { Helmet } from "react-helmet";
+
 const PropertyDetails = () => {
   const [propertyDetails, setPropertyDetails] = useState(null);
 
@@ -25,7 +28,10 @@ const PropertyDetails = () => {
       .join(" ");
   }
   return (
-    <div>
+    <section>
+      <Helmet>
+        <title>Property Details | Nest Seekers</title>
+      </Helmet>
       <h3 className="font-bold text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
         Property Details
       </h3>
@@ -96,7 +102,7 @@ const PropertyDetails = () => {
           Property ID Not Found!
         </p>
       )}
-    </div>
+    </section>
   );
 };
 

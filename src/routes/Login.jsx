@@ -18,6 +18,9 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/config";
 
+// React Helmet
+import { Helmet } from "react-helmet";
+
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -70,6 +73,9 @@ const Login = () => {
 
   return (
     <section className="">
+      <Helmet>
+        <title>Login to Your Account | Nest Seekers</title>
+      </Helmet>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
         <h3 className="flex items-center mb-6 text-2xl font-semibold text-white font-lato">
           Welcome Back!

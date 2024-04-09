@@ -15,6 +15,15 @@ import "animate.css";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "./firebase/config";
 
+// Swiper
+import { register } from "swiper/element/bundle";
+register();
+
+// AOS
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init({ duration: 1200, delay: 50 });
+
 function App() {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
 

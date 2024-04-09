@@ -3,9 +3,6 @@ import banner01 from "../assets/images/banner-01.jpg";
 import banner02 from "../assets/images/banner-02.jpg";
 import banner03 from "../assets/images/banner-03.jpg";
 
-import { register } from "swiper/element/bundle";
-register();
-
 const Slider = () => {
   return (
     <div>

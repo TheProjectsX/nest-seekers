@@ -5,6 +5,9 @@ import { updateProfile } from "firebase/auth";
 // React Toast
 import { toast } from "react-toastify";
 
+// React Helmet
+import { Helmet } from "react-helmet";
+
 const UpdateProfile = () => {
   const context = useContext(UserDataContext);
   const { userAuthData, setUserAuthData, forceUpdate } = context;
@@ -47,7 +50,10 @@ const UpdateProfile = () => {
   };
 
   return (
-    <div>
+    <section>
+      <Helmet>
+        <title>Update Profile Informations | Nest Seekers</title>
+      </Helmet>
       <h3 className="font-bold text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
         Update Profile Informations
       </h3>
@@ -94,7 +100,7 @@ const UpdateProfile = () => {
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 

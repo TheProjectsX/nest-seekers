@@ -3,6 +3,9 @@ import { Link, useLoaderData } from "react-router-dom";
 import Slider from "../components/Slider";
 import { IoLocationSharp } from "react-icons/io5";
 
+// React Helmet
+import { Helmet } from "react-helmet";
+
 const Home = () => {
   const propertiesData = useLoaderData();
 
@@ -15,6 +18,10 @@ const Home = () => {
   }
   return (
     <div className="mb-12 space-y-14">
+      <Helmet>
+        <title>Nest Seekers</title>
+      </Helmet>
+
       <Slider />
 
       {/* Properties Section */}
@@ -33,6 +40,7 @@ const Home = () => {
             <div
               key={idx}
               className="max-w-80 h-auto shadow-lg rounded-md bg-gray-800 text-white relative"
+              data-aos="fade-up"
             >
               <div className="relative overflow-hidden">
                 <img

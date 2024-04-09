@@ -5,6 +5,9 @@ import UserDataContext from "../context/context";
 // React Toast
 import { toast } from "react-toastify";
 
+// React Helmet
+import { Helmet } from "react-helmet";
+
 const Orders = () => {
   const [propertyId, setPropertyId] = useState("");
   const [name, setName] = useState("");
@@ -94,145 +97,150 @@ const Orders = () => {
   };
 
   return (
-    <div>
-      <h3 className="font-bold text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
-        Your Orders
-      </h3>
+    <>
+      <Helmet>
+        <title>Your Orders | Nest Seekers</title>
+      </Helmet>
+      <section>
+        <h3 className="font-bold text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
+          Your Orders
+        </h3>
 
-      <div className="flex flex-col sm:flex-row gap-10">
-        {/* New Order Form */}
-        <div className="sm:w-[54%] p-5 border border-gray-700 ">
-          <h4 className="text-white font-bold font-lato text-center text-2xl mb-8 underline underline-offset-8">
-            Place New Order
-          </h4>
-          <form
-            className="space-y-4 md:space-y-6 container"
-            onSubmit={handleOrder}
-          >
-            <label className="block text-sm font-medium text-white">
-              Property ID:
-              <input
-                type="text"
-                name="id"
-                className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                placeholder="xxx"
-                value={propertyId}
-                onChange={(e) => setPropertyId(e.target.value)}
-                required
-              />
-            </label>
-
-            <label className="block text-sm font-medium text-white">
-              Checkout Name:
-              <input
-                type="text"
-                name="name"
-                className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Mr X"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </label>
-
-            <label className="block text-sm font-medium text-white">
-              Credit Card Number:
-              <input
-                type="text"
-                name="card"
-                minLength={16}
-                maxLength={16}
-                className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                placeholder="xxxxxxxxxxxxxxxx"
-                required
-              />
-            </label>
-
-            <div className="flex gap-4 flex-wrap justify-between !mb-4">
+        <div className="flex flex-col sm:flex-row gap-10">
+          {/* New Order Form */}
+          <div className="sm:w-[54%] p-5 border border-gray-700 ">
+            <h4 className="text-white font-bold font-lato text-center text-2xl mb-8 underline underline-offset-8">
+              Place New Order
+            </h4>
+            <form
+              className="space-y-4 md:space-y-6 container"
+              onSubmit={handleOrder}
+            >
               <label className="block text-sm font-medium text-white">
-                Expiration Date:
+                Property ID <span className="text-red-600">*</span>
                 <input
                   type="text"
-                  name="date"
-                  className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="mm/yy"
-                  required
-                />
-              </label>
-              <label className="block text-sm font-medium text-white">
-                CVV:
-                <input
-                  type="text"
-                  name="cvv"
-                  minLength={3}
+                  name="id"
                   className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                   placeholder="xxx"
+                  value={propertyId}
+                  onChange={(e) => setPropertyId(e.target.value)}
                   required
                 />
               </label>
-            </div>
 
-            <button
-              type="submit"
-              name="submit"
-              className="w-full text-white bg-[#2563eb] hover:bg-[#1d4ed8] focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center animate__animated font-semibold"
-            >
-              Confirm Order
-            </button>
-          </form>
-        </div>
+              <label className="block text-sm font-medium text-white">
+                Checkout Name <span className="text-red-600">*</span>
+                <input
+                  type="text"
+                  name="name"
+                  className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Mr X"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </label>
 
-        {/* Past Orders */}
-        <div className="flex-grow border border-gray-700 p-5">
-          <h4 className="text-white font-bold font-lato text-center text-2xl mb-8 underline underline-offset-8">
-            Your Order History
-          </h4>
+              <label className="block text-sm font-medium text-white">
+                Credit Card Number <span className="text-red-600">*</span>
+                <input
+                  type="text"
+                  name="card"
+                  minLength={16}
+                  maxLength={16}
+                  className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="xxxxxxxxxxxxxxxx"
+                  required
+                />
+              </label>
 
-          <div>
-            {currentOrders === null ? (
-              <div className="flex justify-center p-5">
-                <span className="loading loading-spinner loading-lg"></span>
+              <div className="flex gap-4 flex-wrap justify-between !mb-4">
+                <label className="block text-sm font-medium text-white">
+                  Expiration Date <span className="text-red-600">*</span>
+                  <input
+                    type="text"
+                    name="date"
+                    className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="mm/yy"
+                    required
+                  />
+                </label>
+                <label className="block text-sm font-medium text-white">
+                  CVV <span className="text-red-600">*</span>
+                  <input
+                    type="text"
+                    name="cvv"
+                    minLength={3}
+                    className="mt-2 border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="xxx"
+                    required
+                  />
+                </label>
               </div>
-            ) : currentOrders.length === 0 ? (
-              <p className="text-center italic font-semibold">
-                No Items To Show
-              </p>
-            ) : (
-              <table className="min-w-full divide-y divide-gray-200 border border-gray-600">
-                <thead className="bg-gray-700">
-                  <tr className="divide-x text-center font-lato font-bold text-xs uppercase *:px-6 *:py-3 *:tracking-wider">
-                    <th scope="col">SL</th>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody className=" divide-y divide-gray-200 text-sm">
-                  {currentOrders.map((item, idx) => (
-                    <tr
-                      key={idx}
-                      className="divide-x *:text-center *:p-3 even:bg-[#1c253b]"
-                    >
-                      <td>{idx + 1}</td>
-                      <td>{item.id}</td>
-                      <td>{item.price}</td>
-                      <td>
-                        <Link
-                          to={`/property-details/${item.id}`}
-                          className="btn-link"
-                        >
-                          View Details
-                        </Link>
-                      </td>
+
+              <button
+                type="submit"
+                name="submit"
+                className="w-full text-white bg-[#2563eb] hover:bg-[#1d4ed8] focus:ring-4 focus:outline-none focus:ring-primary-300 rounded-lg text-sm px-5 py-2.5 text-center animate__animated font-semibold"
+              >
+                Confirm Order
+              </button>
+            </form>
+          </div>
+
+          {/* Past Orders */}
+          <div className="flex-grow border border-gray-700 p-5">
+            <h4 className="text-white font-bold font-lato text-center text-2xl mb-8 underline underline-offset-8">
+              Your Order History
+            </h4>
+
+            <div>
+              {currentOrders === null ? (
+                <div className="flex justify-center p-5">
+                  <span className="loading loading-spinner loading-lg"></span>
+                </div>
+              ) : currentOrders.length === 0 ? (
+                <p className="text-center italic font-semibold">
+                  No Items To Show
+                </p>
+              ) : (
+                <table className="min-w-full divide-y divide-gray-200 border border-gray-600">
+                  <thead className="bg-gray-700">
+                    <tr className="divide-x text-center font-lato font-bold text-xs uppercase *:px-6 *:py-3 *:tracking-wider">
+                      <th scope="col">SL</th>
+                      <th scope="col">Order ID</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
+                  </thead>
+                  <tbody className=" divide-y divide-gray-200 text-sm">
+                    {currentOrders.map((item, idx) => (
+                      <tr
+                        key={idx}
+                        className="divide-x *:text-center *:p-3 even:bg-[#1c253b]"
+                      >
+                        <td>{idx + 1}</td>
+                        <td>{item.id}</td>
+                        <td>{item.price}</td>
+                        <td>
+                          <Link
+                            to={`/property-details/${item.id}`}
+                            className="btn-link"
+                          >
+                            View Details
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 
