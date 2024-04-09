@@ -32,44 +32,48 @@ const Home = () => {
           {propertiesData.map((item, idx) => (
             <div
               key={idx}
-              className="relative max-w-80 h-[580px] bg-[#10285f] overflow-hidden"
+              className="max-w-80 h-auto shadow-lg rounded-md bg-gray-800 text-white relative"
             >
-              <img
-                src={item["image"]}
-                alt="Property Image"
-                className="mb-2 h-[215px] w-full hover:scale-105 transition-[transform] duration-300"
-              />
-              <p
-                className={`absolute left-4 top-3 px-2 py-0.5 font-bold font-lato text-white ${
-                  item["status"] == "sale" ? "bg-amber-600" : "bg-emerald-500"
-                }`}
-              >
-                {capitalizeFirstLetters(item["status"])}
-              </p>
-
-              <div className="p-4">
-                <p className="mb-2 font-semibold text-stone-300 font-lato pl-2 border-l-2">
+              <div className="relative overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.estate_title}
+                  className="w-full h-52 object-cover rounded-t-md hover:scale-110 transition-[transform] duration-300"
+                />
+                <div
+                  className={`absolute top-0 left-0 ${
+                    item.status === "sale" ? "bg-green-500" : "bg-blue-500"
+                  } px-2 py-1 rounded-tr-md rounded-bl-md`}
+                >
+                  <p className="text-sm font-semibold">
+                    {capitalizeFirstLetters(item.status)}
+                  </p>
+                </div>
+              </div>
+              <div className="p-4 mb-16">
+                <p className="mb-2 text-lg font-semibold text-stone-300 font-lato pl-2 border-l-2 border-blue-500">
                   {item["price"]}
                 </p>
-                <p className="font-bold text-xl">{item["estate_title"]}</p>
-                <p className="mb-2 italic text-sm">{item["segment_name"]}</p>
-                <p className="mb-2 font-lato inline-block">
-                  {item["description"]}
+                <h2 className="text-xl font-semibold mb-2">
+                  {item.estate_title}
+                </h2>
+                <p className="text-sm mb-4">{item.description}</p>
+                <p className="font-semibold">Area: {item.area}</p>
+                <p className="font-semibold">Type: {item.segment_name}</p>
+                <p className="font-semibold flex items-center gap-2 mb-2">
+                  <IoLocationSharp /> {item.location}
                 </p>
-                <p>
-                  Area: <span className="italic">{item["area"]}</span>
-                </p>
-                <p className="flex items-center gap-2 mb-2.5">
-                  <IoLocationSharp /> {item["location"]}
-                </p>
-                <p className="text-sm italic text-teal-400">
+                <p className="text-sm font-semibold italic text-blue-300">
                   {item["facilities"]
                     .map((fac) => capitalizeFirstLetters(fac))
                     .join(", ")}
                 </p>
               </div>
-              <div className="absolute left-[50%] translate-x-[-50%] bottom-2">
-                <Link to={`/property-details/${item["id"]}`} className="btn">
+              <div className="absolute left-[50%] translate-x-[-50%] bottom-5">
+                <Link
+                  to={`/property-details/${item["id"]}`}
+                  className="bg-blue-500 hover:bg-blue-600 text-white py-2.5 px-5 rounded-md transition duration-300 ease-in-out font-lato font-semibold"
+                >
                   View Property
                 </Link>
               </div>
