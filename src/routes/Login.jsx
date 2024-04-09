@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Icons
 import { FcGoogle } from "react-icons/fc";
@@ -20,7 +20,6 @@ import auth from "../firebase/config";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
 
   // Login using Google
   const handleGoogleLogin = () => {
@@ -75,7 +74,7 @@ const Login = () => {
         <h3 className="flex items-center mb-6 text-2xl font-semibold text-white font-lato">
           Welcome Back!
         </h3>
-        <div className="rounded-lg shadow dark:border md:mt-0 w-full sm:w-fit xl:p-0 bg-gray-800 border-gray-700">
+        <div className="rounded-lg shadow border md:mt-0 w-full sm:w-fit xl:p-0 bg-gray-800 border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white text-center underline underline-offset-8">
               Login to Your Account

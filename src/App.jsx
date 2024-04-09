@@ -2,7 +2,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import UserDataContext from "./context/context";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 
 // React Toast
 import { ToastContainer, Bounce } from "react-toastify";
@@ -16,6 +16,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import auth from "./firebase/config";
 
 function App() {
+  const [, forceUpdate] = useReducer((x) => x + 1, 0);
   const [dataLoading, setDataLoading] = useState(true);
   const [userAuthData, setUserAuthData] = useState(null);
 
@@ -47,7 +48,7 @@ function App() {
       />
       <div className="max-w-[1100px] mx-auto font-ubuntu" data-theme="night">
         <UserDataContext.Provider
-          value={{ userAuthData, setUserAuthData, dataLoading }}
+          value={{ userAuthData, setUserAuthData, dataLoading, forceUpdate }}
         >
           <div className="px-5 mb-10">
             <Navbar />

@@ -90,7 +90,7 @@ const SignUp = () => {
         <h3 className="flex items-center mb-6 text-2xl font-semibold text-white font-lato">
           Hello There!
         </h3>
-        <div className="rounded-lg shadow dark:border md:mt-0 w-full sm:w-fit xl:p-0 bg-gray-800 border-gray-700">
+        <div className="rounded-lg shadow border md:mt-0 w-full sm:w-fit xl:p-0 bg-gray-800 border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white text-center underline underline-offset-8">
               Create a New Account
