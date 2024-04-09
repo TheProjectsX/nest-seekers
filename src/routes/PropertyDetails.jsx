@@ -25,8 +25,8 @@ const PropertyDetails = () => {
       .join(" ");
   }
   return (
-    <>
-      <h3 className="font-bold text-2xl mb-10 p-3 text-center font-lato bg-gray-600 rounded-lg">
+    <div>
+      <h3 className="font-bold text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
         Property Details
       </h3>
       {propertyDetails !== "" ? (
@@ -84,10 +84,10 @@ const PropertyDetails = () => {
               </div>
             </div>
             <Link
-              to={`/order/${propertyDetails.id}`}
+              to={`/orders?id=${propertyDetails.id}`}
               className="w-32 mx-auto block text-center bg-blue-500 hover:bg-blue-600 text-white py-2.5 rounded-md transition duration-300 ease-in-out font-lato font-semibold"
             >
-              Order Now
+              {propertyDetails.status === "sale" ? "Order Now" : "Book Now"}
             </Link>
           </div>
         </div>
@@ -96,7 +96,7 @@ const PropertyDetails = () => {
           Property ID Not Found!
         </p>
       )}
-    </>
+    </div>
   );
 };
 

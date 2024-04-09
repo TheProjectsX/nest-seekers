@@ -17,8 +17,10 @@ import auth from "./firebase/config";
 
 function App() {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
+
   const [dataLoading, setDataLoading] = useState(true);
   const [userAuthData, setUserAuthData] = useState(null);
+  const [ordersData, setOrdersData] = useState(null);
 
   // Auth Change Effect
   useEffect(() => {
@@ -31,6 +33,51 @@ function App() {
     return () => unsubscribe();
   }, []);
 
+  // Get Data from LocalStorage
+  useEffect(() => {
+    if (userAuthData) {
+      const orders = JSON.parse(localStorage.getItem("orders")) ?? [];
+
+      const userOrder = orders.find(
+        (item) => item.email === userAuthData.email
+      );
+
+      if (userOrder) {
+        setOrdersData(userOrder);
+      } else {
+        setOrdersData([]);
+      }
+    }
+  }, [userAuthData]);
+
+  // Update Order Data
+  const updateOrderData = (id) => {
+    const orders = JSON.parse(localStorage.getItem("orders")) ?? [];
+    let userOrder = orders.find((item) => item.email === userAuthData.email);
+
+    if (!userOrder) {
+      orders.push({
+        email: userAuthData.email,
+        orders: [],
+      });
+    }
+
+    orders.forEach((item) => {
+      if (item.email === userAuthData.email) {
+        item.orders.push(id);
+      }
+    });
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    userOrder = orders.find((item) => item.email === userAuthData.email);
+    if (userOrder) {
+      setOrdersData(userOrder);
+    } else {
+      setOrdersData([]);
+    }
+  };
+
   return (
     <>
       <ToastContainer
@@ -40,7 +87,7 @@ function App() {
         newestOnTop
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
+        pauseOnFocusLoss={false}
         draggable
         pauseOnHover
         theme="dark"
@@ -48,7 +95,14 @@ function App() {
       />
       <div className="max-w-[1100px] mx-auto font-ubuntu" data-theme="night">
         <UserDataContext.Provider
-          value={{ userAuthData, setUserAuthData, dataLoading, forceUpdate }}
+          value={{
+            userAuthData,
+            setUserAuthData,
+            dataLoading,
+            forceUpdate,
+            ordersData,
+            updateOrderData,
+          }}
         >
           <div className="px-5 mb-10">
             <Navbar />
