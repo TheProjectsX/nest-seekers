@@ -22,7 +22,7 @@ register();
 // AOS
 import AOS from "aos";
 import "aos/dist/aos.css";
-AOS.init({ duration: 1200, delay: 50 });
+AOS.init({ duration: 1200, delay: 100 });
 
 function App() {
   const [, forceUpdate] = useReducer((x) => x + 1, 0);
