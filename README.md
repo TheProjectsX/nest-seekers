@@ -18,8 +18,11 @@ A Single page Real Estate Web App.
 ## Packages Used:
 
 - [Animate on scroll library (AOS)](https://www.npmjs.com/package/aos)
+  - Used in Homepage Property Cards
 - [Animate.css](https://animate.style/)
+  - Used in Form's Submit Buttons to Indicate Error
 - [Swiper JS](https://swiperjs.com/)
+  - Used in Homepage
 - Also Used:
   - React Toastify
   - React Icons
