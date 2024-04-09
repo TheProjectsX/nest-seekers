@@ -1,8 +1,27 @@
-# React + Vite
+# Nest Seekers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Single page Real Estate Web App.
 
-Currently, two official plugins are available:
+## Live URL:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[https://nest-seekers.surge.sh/](https://nest-seekers.surge.sh/)
+
+## Features:
+
+- Login and Sign Up Options.
+- Can Login / Sign up using Google and GitHub.
+- Has Profile Informations Update Option.
+- Has Details page for Each Property.
+- Has Order Page.
+- Order page Includes not only Ordering new Property but also has Order History.
+
+## Packages Used:
+
+- [Animate on scroll library (AOS)](https://www.npmjs.com/package/aos)
+- [Animate.css](https://animate.style/)
+- [Swiper JS](https://swiperjs.com/)
+- Also Used:
+  - React Toastify
+  - React Icons
+  - React Helmet
+  - Firebase
