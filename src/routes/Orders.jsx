@@ -102,14 +102,14 @@ const Orders = () => {
         <title>Your Orders | Nest Seekers</title>
       </Helmet>
       <section>
-        <h3 className="font-bold text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
+        <h3 className="font-bold text-xl sm:text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
           Your Orders
         </h3>
 
         <div className="flex flex-col sm:flex-row gap-10">
           {/* New Order Form */}
           <div className="sm:w-[54%] p-5 border border-gray-700 ">
-            <h4 className="text-white font-bold font-lato text-center text-2xl mb-8 underline underline-offset-8">
+            <h4 className="text-white font-bold font-lato text-center text-lg sm:text-xl mb-8 underline underline-offset-8">
               Place New Order
             </h4>
             <form
@@ -191,7 +191,7 @@ const Orders = () => {
 
           {/* Past Orders */}
           <div className="flex-grow border border-gray-700 p-5">
-            <h4 className="text-white font-bold font-lato text-center text-2xl mb-8 underline underline-offset-8">
+            <h4 className="text-white font-bold font-lato text-center text-lg sm:text-xl mb-8 underline underline-offset-8">
               Your Order History
             </h4>
 

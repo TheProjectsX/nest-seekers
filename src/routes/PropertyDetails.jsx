@@ -32,7 +32,7 @@ const PropertyDetails = () => {
       <Helmet>
         <title>Property Details | Nest Seekers</title>
       </Helmet>
-      <h3 className="font-bold text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
+      <h3 className="font-bold text-xl sm:text-2xl mb-10 p-3 text-center font-lato bg-blue-700 text-white rounded-lg">
         Property Details
       </h3>
       {propertyDetails !== "" ? (
