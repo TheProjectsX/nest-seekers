@@ -54,12 +54,21 @@ const SignUp = () => {
     e.preventDefault();
 
     const password = e.target.password.value;
-    if (!passwordVerifyPattern.test(password)) {
+    if (!/[A-Z]/.test(password)) {
       e.target.password.style.borderColor = "red";
-      toast.error(
-        "Password must Contain at least an UpperCase and LowerCase Character",
-        { autoClose: 5000 }
-      );
+      toast.error("Password must Contain at least one UpperCase Character", {
+        autoClose: 5000,
+      });
+      e.target.submit.classList.add("animate__shakeX");
+      setTimeout(() => {
+        e.target.submit.classList.remove("animate__shakeX");
+      }, 3000);
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      e.target.password.style.borderColor = "red";
+      toast.error("Password must Contain at least one LowerCase Character", {
+        autoClose: 5000,
+      });
       e.target.submit.classList.add("animate__shakeX");
       setTimeout(() => {
         e.target.submit.classList.remove("animate__shakeX");
@@ -92,7 +101,7 @@ const SignUp = () => {
       <Helmet>
         <title>Create new Account | Nest Seekers</title>
       </Helmet>
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+      <div className="flex flex-col items-center justify-center sm:px-6 py-8 mx-auto">
         <h3 className="flex items-center mb-6 text-2xl font-semibold text-white font-lato">
           Hello There!
         </h3>

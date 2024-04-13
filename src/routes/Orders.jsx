@@ -156,7 +156,7 @@ const Orders = () => {
               </label>
 
               <div className="flex gap-4 flex-wrap justify-between !mb-4">
-                <label className="block text-sm font-medium text-white">
+                <label className="block text-sm font-medium text-white flex-grow">
                   Expiration Date <span className="text-red-600">*</span>
                   <input
                     type="text"
@@ -166,7 +166,7 @@ const Orders = () => {
                     required
                   />
                 </label>
-                <label className="block text-sm font-medium text-white">
+                <label className="block text-sm font-medium text-white flex-grow">
                   CVV <span className="text-red-600">*</span>
                   <input
                     type="text"

@@ -31,6 +31,13 @@ const Navbar = () => {
       <li>
         <NavLink to={"/update-profile"}>Update Profile</NavLink>
       </li>
+      {userAuthData && (
+        <li>
+          <button className="btn btn-sm sm:hidden" onClick={handleLogout}>
+            Logout
+          </button>
+        </li>
+      )}
     </>
   );
 
@@ -41,7 +48,7 @@ const Navbar = () => {
       <>
         {userAuthData ? (
           <>
-            <button className="btn" onClick={handleLogout}>
+            <button className="btn hidden sm:block" onClick={handleLogout}>
               Logout
             </button>
             <img
@@ -81,7 +88,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10"
           >
             <NavLinks />
           </ul>

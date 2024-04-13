@@ -76,7 +76,7 @@ const Login = () => {
       <Helmet>
         <title>Login to Your Account | Nest Seekers</title>
       </Helmet>
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto">
+      <div className="flex flex-col items-center justify-center sm:px-6 py-8 mx-auto">
         <h3 className="flex items-center mb-6 text-2xl font-semibold text-white font-lato">
           Welcome Back!
         </h3>
